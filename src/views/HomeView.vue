@@ -15,9 +15,6 @@
       <img src="../assets/TwoFor29.svg" alt="" />
       <img src="../assets/TwoFor49.svg" alt="" />
     </div>
-    <div class="footer">
-      <img src="../assets/footer.svg" alt="" />
-    </div>
   </div>
 </template>
 
