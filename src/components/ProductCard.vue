@@ -1,56 +1,49 @@
+<!-- eslint-disable prettier/prettier -->
 <template>
   <div class="product-card">
     <div class="product-img">
       <img src="" alt="" />
     </div>
     <div class="product-info">
-      <h4>Category</h4>
-      <h3>Name</h3>
-      <div class="rating">
-        <icon-component
-          class="icons"
-          icon="ion:star-outline"
-          color="salmon"
-          size="18"
-        ></icon-component>
-        <icon-component
-          class="icons"
-          icon="ion:star"
-          color="salmon"
-          size="18"
-        ></icon-component>
-      </div>
-      <h3>Price</h3>
+      <h4>{{ product.category }}</h4>
+      <h3>{{ product.productName }}</h3>
+      <RatingComponent v-bind:rating="product.rating"/>
+      <h3>{{ product.price }}</h3>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import IconComponent from "@/components/IconComponent.vue";
+import RatingComponent from "@/components/RatingComponent.vue";
 
 export default defineComponent({
-  components: { IconComponent },
+  components: { RatingComponent },
   name: "ProductCard",
+  props: {
+    product: {
+      type: Object,
+      required: true,
+    },
+  },
 });
 </script>
 
 <style scoped>
 .product-img {
-  height: 160px;
-  padding: 0px;
-  background-color: lightgrey;
+  height: 200px;
+  width: 250px;
+  background-color: whitesmoke;
 }
 .product-card {
   width: 250px;
-  margin: 30px;
-  border: 1px solid orangered;
+  padding: 20px;
 }
 .product-info {
   display: block;
   text-align: left;
   line-height: 0.5;
-  border: 1px solid blue;
+  padding: 10px;
 }
 h4 {
   font-weight: lighter;
