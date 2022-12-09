@@ -6,7 +6,6 @@ export interface Product {
   id: number;
   rating: number;
   productname: string;
-  description: string;
   price: number;
   category: string;
 }
@@ -16,6 +15,7 @@ export interface DetailedProduct extends Product {
   brand: string;
   size: string[];
   color: string[];
+  description: string;
   reviews: string[];
-  relatedproducts: string[];
+  relatedProducts: string[];
 }
