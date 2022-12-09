@@ -1,10 +1,14 @@
+<!-- eslint-disable prettier/prettier -->
 <template>
   <div class="home">
     <img class="headerpic" src="../assets/header.jpg" alt="" />
+    <h2>Featured Products</h2>
     <div class="products-container">
-      <h2>Featured Product</h2>
       <div class="product-cards">
-        <ProductCard />
+        <ProductCard
+          v-for="product in products.slice(0,8)"
+          :key="product.id"
+          :product="product" />
       </div>
     </div>
     <div class="toppicks-items">
@@ -27,6 +31,75 @@ export default defineComponent({
   components: {
     ProductCard,
   },
+  data() {
+    return {
+      products: [
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 11.2,
+          category: "Batman",
+        },
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 11.2,
+          category: "Batman",
+        },
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 11.2,
+          category: "Batman",
+        },
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 11.2,
+          category: "Batman",
+        },
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 11.2,
+          category: "Batman",
+        },
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 11.2,
+          category: "Batman",
+        },
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 11.2,
+          category: "Batman",
+        },
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 11.2,
+          category: "Batman",
+        },
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 11.2,
+          category: "Batman",
+        },
+      ],
+    };
+  },
 });
 </script>
 <style scoped>
@@ -36,6 +109,17 @@ export default defineComponent({
 .products-container {
   width: auto;
   padding-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.product-cards {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 50% 50%;
+  max-width: max-content;
+  border: 1px solid greenyellow;
+  max-height: max-content;
 }
 h2 {
   text-align: center;
