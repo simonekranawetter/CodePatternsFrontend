@@ -14,24 +14,15 @@
         </div>
       </div>
       <div class="details-container">
-        <h2>@{{product.productName}}</h2>
+        <h2>{{ product.productName }}</h2>
         <div class="brand">
-          <h4>@{{product.id}}</h4>
+          <h4>{{ product.id }}</h4>
           <h4>BrandName</h4>
         </div>
         <div class="rating">
-          <icon-component
-            class="r-icons"
-            icon="ion:star-outline"
-            color="salmon"
-            size="18"></icon-component>
-          <icon-component
-            class="r-icons"
-            icon="ion:star"
-            color="salmon"
-            size="18"></icon-component>
+          <RatingComponent v-bind:rating="product.rating" />
         </div>
-        <h2>@{{product.price}}</h2>
+        <h2>{{ product.price }}</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem aperiam,
           blanditiis recusandae, non facere reprehenderit nam corrupti
@@ -93,9 +84,14 @@
     </div>
     <div class="container">
       <div class="product-details">
-        <ProductDetailsCard v-bind:product="product" :key="product.id"/>
+        <ProductDetailsCard v-bind:product="product" :key="product.id" />
         <h3>Related Products</h3>
-        <ProductCard v-bind:product="product" :key="product.id" />
+        <div class="related-products">
+          <ProductCard
+            v-for="product in products.slice(0, 5)"
+            :key="product.id"
+            :product="product" />
+        </div>
       </div>
     </div>
   </div>
@@ -103,18 +99,89 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { useRoute } from "vue-router";
+import RatingComponent from "@/components/RatingComponent.vue";
 import IconComponent from "@/components/IconComponent.vue";
 import ProductDetailsCard from "@/components/ProductDetailsCard.vue";
 import ProductCard from "@/components/ProductCard.vue";
 
 export default defineComponent({
-  components: { IconComponent, ProductDetailsCard, ProductCard },
+  components: {
+    RatingComponent,
+    IconComponent,
+    ProductDetailsCard,
+    ProductCard,
+  },
   name: "ProductComponent",
   data() {
     return {
+      products: [
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 9.2,
+          category: "Batman",
+        },
+        {
+          id: 223423,
+          rating: 2,
+          productName: "Hi Mom",
+          price: 1187.2,
+          category: "Batman",
+        },
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 11.2,
+          category: "Batman",
+        },
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 11.2,
+          category: "Batman",
+        },
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 11.2,
+          category: "Batman",
+        },
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 11.2,
+          category: "Batman",
+        },
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 11.2,
+          category: "Batman",
+        },
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 11.2,
+          category: "Batman",
+        },
+        {
+          id: 223423,
+          rating: 4,
+          productName: "Hi Mom",
+          price: 11.2,
+          category: "Batman",
+        },
+      ],
       product: {
         id: 223423,
-        rating: 4,
+        rating: 3,
         productName: "Hi Mom",
         price: 11.2,
         category: "Nice things",
@@ -133,13 +200,11 @@ export default defineComponent({
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px blue solid;
 }
 .sales {
   text-align: center;
 }
 .container {
-  border: 2px solid greenyellow;
   display: flex;
   justify-content: center;
 }
@@ -245,5 +310,8 @@ h4 {
 h3 {
   text-align: left;
   padding-left: 30px;
+}
+.related-products {
+  display: flex;
 }
 </style>

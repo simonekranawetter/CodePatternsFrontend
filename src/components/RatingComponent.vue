@@ -2,15 +2,19 @@
 <template>
   <div class="rating">
     <icon-component
-      v-if="rating.length < 5"
+      v-for="star in convertToArray(rating)"
+      :key="star"
+      :rating="rating"
       class="icons"
-      icon="ion:star-outline"
+      icon="ion:star"
       color="salmon"
       size="18"></icon-component>
     <icon-component
-      v-if="rating.length"
+      v-for="star in fillUpStars(rating)"
+      :key="star"
+      :rating="rating"
       class="icons"
-      icon="ion:star"
+      icon="ion:star-outline"
       color="salmon"
       size="18"></icon-component>
   </div>
@@ -26,6 +30,15 @@ export default defineComponent({
     rating: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    convertToArray(rating: number): number[] {
+      return Array(rating);
+    },
+    fillUpStars(rating: number) {
+      const fillUpStarsArray = 5 - this.convertToArray(rating).length;
+      return Array(fillUpStarsArray);
     },
   },
 });

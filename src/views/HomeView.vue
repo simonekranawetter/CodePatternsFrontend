@@ -43,7 +43,7 @@ export default defineComponent({
         },
         {
           id: 223423,
-          rating: 4,
+          rating: 2,
           productName: "Hi Mom",
           price: 11.2,
           category: "Batman",
