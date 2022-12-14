@@ -1,13 +1,16 @@
 <!-- eslint-disable prettier/prettier -->
 <template>
-  <div class="product-card">
+  <div
+    class="product-card"
+    @click="() => $router.push('/products/' + product.id)" 
+    >
     <div class="product-img">
       <img src="" alt="" />
     </div>
     <div class="product-info">
       <h4>{{ product.category }}</h4>
       <h3>{{ product.productName }}</h3>
-      <RatingComponent v-bind:rating="product.rating"/>
+      <RatingComponent v-bind:rating="product.rating" />
       <h3>{{ product.price }}</h3>
     </div>
   </div>
@@ -38,6 +41,9 @@ export default defineComponent({
 .product-card {
   width: 250px;
   padding: 20px;
+}
+.product-card :hover {
+  cursor: pointer;
 }
 .product-info {
   display: block;

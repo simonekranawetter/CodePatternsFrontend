@@ -23,15 +23,10 @@
           <RatingComponent v-bind:rating="product.rating" />
         </div>
         <h2>{{ product.price }}</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem aperiam,
-          blanditiis recusandae, non facere reprehenderit nam corrupti
-          doloremque quidem provident ad! Eligendi, sunt iure temporibus vero in
-          commodi nam maxime?
-        </p>
+        <p>{{product.description}}</p>
         <div class="size">
           <h4>Size</h4>
-          <button class="sizebtn">S</button>
+          <button class="sizebtn">{{product.size}}</button>
           <button class="sizebtn">M</button>
           <button class="sizebtn">L</button>
           <button class="sizebtn">XL</button>
@@ -46,7 +41,7 @@
               color="grey"
               size="18"></icon-component>
             <div class="dropdown-content">
-              <a href="">Something</a>
+              <a href="">{{ product.colors }}</a>
             </div>
           </div>
         </div>
@@ -180,14 +175,18 @@ export default defineComponent({
         },
       ],
       product: {
-        id: 223423,
+        id: this.$route.fullPath.slice(10),
         rating: 3,
         productName: "Hi Mom",
+        description: "I am the best product ever!",
         price: 11.2,
+        size: "S",
         category: "Nice things",
+        colors: "blue",
       },
     };
   },
+  methods: {},
   mounted() {
     const route = useRoute();
     console.log(route.params.name);

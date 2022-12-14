@@ -5,17 +5,16 @@
 export interface Product {
   id: number;
   rating: number;
-  productname: string;
+  productName: string;
   price: number;
   category: string;
+  picture: string;
 }
 /* open- closed principle: only adding to existing things and not changing 
   originally available things. */
 export interface DetailedProduct extends Product {
   brand: string;
-  size: string[];
-  color: string[];
+  size: string;
+  color: string;
   description: string;
-  reviews: string[];
-  relatedProducts: string[];
 }

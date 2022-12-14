@@ -35,21 +35,21 @@ export default defineComponent({
     return {
       products: [
         {
-          id: 223423,
+          id: 2,
           rating: 4,
           productName: "Hi Mom",
           price: 11.2,
           category: "Batman",
         },
         {
-          id: 223423,
+          id: 22,
           rating: 2,
           productName: "Hi Mom",
           price: 11.2,
           category: "Batman",
         },
         {
-          id: 223423,
+          id: 1,
           rating: 4,
           productName: "Hi Mom",
           price: 11.2,
