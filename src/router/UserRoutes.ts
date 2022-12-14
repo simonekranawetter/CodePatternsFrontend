@@ -1,4 +1,4 @@
-import { Route } from "@/models/interfaces/RouteInterface";
+import { Route } from "@/interfaces/RouteInterface";
 
 export const UserRoutes: Route[] = [
   {

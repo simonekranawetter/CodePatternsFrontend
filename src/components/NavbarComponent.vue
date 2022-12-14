@@ -44,7 +44,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import IconComponent from "@/components/IconComponent.vue";
-import { UserRoutes } from "@/controllers/UserRoutes";
+import { UserRoutes } from "@/router/UserRoutes";
 
 export default defineComponent({
   components: { IconComponent },
