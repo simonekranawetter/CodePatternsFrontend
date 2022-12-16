@@ -47,14 +47,15 @@
       </div>
     </div>
     <div class="support">
-      <img src="@/assets/Support.svg" alt="">
+      <img src="@/assets/Support.svg" alt="" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import ProductCard from "@/components/ProductCard.vue"; // @ is an alias to /src
+import ProductCard from "@/components/ProductCard.vue";
+import { Product } from "@/interfaces/ProductInterface";
 
 export default defineComponent({
   name: "HomeView",
@@ -63,72 +64,39 @@ export default defineComponent({
   },
   data() {
     return {
-      products: [
-        {
-          id: 2,
-          rating: 4,
-          productName: "Hi Mom",
-          price: 11.2,
-          category: "Batman",
-        },
-        {
-          id: 22,
-          rating: 2,
-          productName: "Hi Mom",
-          price: 11.2,
-          category: "Batman",
-        },
-        {
-          id: 1,
-          rating: 4,
-          productName: "Hi Mom",
-          price: 11.2,
-          category: "Batman",
-        },
-        {
-          id: 223423,
-          rating: 4,
-          productName: "Hi Mom",
-          price: 11.2,
-          category: "Batman",
-        },
-        {
-          id: 223423,
-          rating: 4,
-          productName: "Hi Mom",
-          price: 11.2,
-          category: "Batman",
-        },
-        {
-          id: 223423,
-          rating: 4,
-          productName: "Hi Mom",
-          price: 11.2,
-          category: "Batman",
-        },
-        {
-          id: 223423,
-          rating: 4,
-          productName: "Hi Mom",
-          price: 11.2,
-          category: "Batman",
-        },
-        {
-          id: 223423,
-          rating: 4,
-          productName: "Hi Mom",
-          price: 11.2,
-          category: "Batman",
-        },
-        {
-          id: 223423,
-          rating: 4,
-          productName: "Hi Mom",
-          price: 11.2,
-          category: "Batman",
-        },
-      ],
+      products: [] as Product[],
+      props: {
+        id: 0,
+        rating: 0,
+        productName: "",
+        price: 0,
+        category: "",
+        picture: "",
+      },
     };
+  },
+  created() {
+    this.getAllProducts();
+  },
+  methods: {
+    async getAllProducts(): Promise<Product[] | undefined> {
+      //TODO here too!
+      const url = new URL(
+        `https://localhost:7224/api/` + "Products"
+      ).toString();
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {},
+        });
+        const result = await response.json();
+        console.log(result);
+        return result;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (ex: any) {
+        console.error(ex.message);
+      }
+    },
   },
 });
 </script>
