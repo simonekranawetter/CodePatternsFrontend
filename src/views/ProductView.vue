@@ -23,10 +23,10 @@
           <RatingComponent v-bind:rating="product.rating" />
         </div>
         <h2>{{ product.price }}</h2>
-        <p>{{product.description}}</p>
+        <p>{{ product.description }}</p>
         <div class="size">
           <h4>Size</h4>
-          <button class="sizebtn">{{product.size}}</button>
+          <button class="sizebtn">{{ product.size }}</button>
           <button class="sizebtn">M</button>
           <button class="sizebtn">L</button>
           <button class="sizebtn">XL</button>
@@ -98,6 +98,7 @@ import RatingComponent from "@/components/RatingComponent.vue";
 import IconComponent from "@/components/IconComponent.vue";
 import ProductDetailsCard from "@/components/ProductDetailsCard.vue";
 import ProductCard from "@/components/ProductCard.vue";
+import { Product } from "@/interfaces/ProductInterface";
 
 export default defineComponent({
   components: {
@@ -111,82 +112,70 @@ export default defineComponent({
     return {
       products: [
         {
-          id: 223423,
-          rating: 4,
-          productName: "Hi Mom",
-          price: 9.2,
-          category: "Batman",
-        },
-        {
-          id: 223423,
-          rating: 2,
-          productName: "Hi Mom",
-          price: 1187.2,
-          category: "Batman",
-        },
-        {
-          id: 223423,
-          rating: 4,
-          productName: "Hi Mom",
-          price: 11.2,
-          category: "Batman",
-        },
-        {
-          id: 223423,
-          rating: 4,
-          productName: "Hi Mom",
-          price: 11.2,
-          category: "Batman",
-        },
-        {
-          id: 223423,
-          rating: 4,
-          productName: "Hi Mom",
-          price: 11.2,
-          category: "Batman",
-        },
-        {
-          id: 223423,
-          rating: 4,
-          productName: "Hi Mom",
-          price: 11.2,
-          category: "Batman",
-        },
-        {
-          id: 223423,
-          rating: 4,
-          productName: "Hi Mom",
-          price: 11.2,
-          category: "Batman",
-        },
-        {
-          id: 223423,
-          rating: 4,
-          productName: "Hi Mom",
-          price: 11.2,
-          category: "Batman",
-        },
-        {
-          id: 223423,
-          rating: 4,
-          productName: "Hi Mom",
-          price: 11.2,
-          category: "Batman",
+          id: 1,
+          rating: 0,
+          productName: "",
+          description: "",
+          price: 0,
+          size: "",
+          category: "",
+          colors: "",
         },
       ],
       product: {
-        id: this.$route.fullPath.slice(10),
-        rating: 3,
-        productName: "Hi Mom",
-        description: "I am the best product ever!",
-        price: 11.2,
-        size: "S",
-        category: "Nice things",
-        colors: "blue",
+        id: 1,
+        rating: 0,
+        productName: "",
+        description: "",
+        price: 0,
+        size: "",
+        category: "",
+        colors: "",
       },
     };
   },
-  methods: {},
+  created() {
+    this.getAllProducts();
+    this.getProductDetails(this.product.id);
+  },
+  methods: {
+    async getAllProducts(): Promise<Product[] | undefined> {
+      //TODO here too!
+      const url = new URL(
+        `https://localhost:7224/api/` + "Products"
+      ).toString();
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {},
+        });
+        const result = await response.json();
+        console.log("Legolas");
+        console.log(result);
+        return result;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (ex: any) {
+        console.error(ex.message);
+      }
+    },
+    async getProductDetails(productId: number) {
+      const url = new URL(
+        `https://localhost:7224/api/Products/` + productId
+      ).toString();
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+        });
+        const result = await response.json();
+        console.log("Gandalf");
+        console.log(result);
+        return result;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (ex: any) {
+        console.error(ex.message);
+      }
+    },
+  },
   mounted() {
     const route = useRoute();
     console.log(route.params.name);
