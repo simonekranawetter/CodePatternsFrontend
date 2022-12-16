@@ -43,6 +43,7 @@ export default defineComponent({
 
 <style scoped>
 .footer {
+  border-top: 2px solid lightgrey;
   background-color: #eeeeee;
   width: auto;
   padding-bottom: 20px;
