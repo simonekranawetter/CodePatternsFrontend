@@ -64,34 +64,22 @@ export default defineComponent({
   },
   data() {
     return {
-      products: [] as Product[],
-      props: {
-        id: 0,
-        rating: 0,
-        productName: "",
-        price: 0,
-        category: "",
-        picture: "",
-      },
+      products: null,
     };
   },
   created() {
     this.getAllProducts();
   },
   methods: {
-    async getAllProducts(): Promise<Product[] | undefined> {
+    async getAllProducts() {
       //TODO here too!
       const url = new URL(
         `https://localhost:7224/api/` + "Products"
       ).toString();
       try {
-        const response = await fetch(url, {
-          method: "GET",
-          headers: {},
-        });
-        const result = await response.json();
-        console.log(result);
-        return result;
+        await fetch(url).then((response) =>
+          response.json().then((data) => (this.products = data))
+        );
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (ex: any) {
         console.error(ex.message);

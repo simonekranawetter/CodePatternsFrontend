@@ -98,7 +98,6 @@ import RatingComponent from "@/components/RatingComponent.vue";
 import IconComponent from "@/components/IconComponent.vue";
 import ProductDetailsCard from "@/components/ProductDetailsCard.vue";
 import ProductCard from "@/components/ProductCard.vue";
-import { Product } from "@/interfaces/ProductInterface";
 
 export default defineComponent({
   components: {
@@ -110,20 +109,9 @@ export default defineComponent({
   name: "ProductComponent",
   data() {
     return {
-      products: [
-        {
-          id: 1,
-          rating: 0,
-          productName: "",
-          description: "",
-          price: 0,
-          size: "",
-          category: "",
-          colors: "",
-        },
-      ],
+      products: null,
       product: {
-        id: 1,
+        id: this.$route.fullPath.slice(10),
         rating: 0,
         productName: "",
         description: "",
@@ -139,37 +127,28 @@ export default defineComponent({
     this.getProductDetails(this.product.id);
   },
   methods: {
-    async getAllProducts(): Promise<Product[] | undefined> {
+    async getAllProducts() {
       //TODO here too!
       const url = new URL(
         `https://localhost:7224/api/` + "Products"
       ).toString();
       try {
-        const response = await fetch(url, {
-          method: "GET",
-          headers: {},
-        });
-        const result = await response.json();
-        console.log("Legolas");
-        console.log(result);
-        return result;
+        await fetch(url).then((response) =>
+          response.json().then((data) => (this.products = data))
+        );
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (ex: any) {
         console.error(ex.message);
       }
     },
-    async getProductDetails(productId: number) {
+    async getProductDetails(productId: string) {
       const url = new URL(
         `https://localhost:7224/api/Products/` + productId
       ).toString();
       try {
-        const response = await fetch(url, {
-          method: "GET",
-        });
-        const result = await response.json();
-        console.log("Gandalf");
-        console.log(result);
-        return result;
+        await fetch(url).then((response) =>
+          response.json().then((data) => (this.product = data))
+        );
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (ex: any) {
         console.error(ex.message);
