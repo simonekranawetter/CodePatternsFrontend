@@ -17,7 +17,7 @@
         <h2>{{ product.productName }}</h2>
         <div class="brand">
           <h4>{{ product.id }}</h4>
-          <h4>BrandName</h4>
+          <h4>{{ product.brand }}</h4>
         </div>
         <div class="rating">
           <RatingComponent v-bind:rating="product.rating" />
@@ -29,7 +29,9 @@
           <h3 v-if="product.salesPrice !== undefined">
             $ {{ product.salesPrice }}
           </h3>
-          <h3 v-if="product.salesPrice === undefined" class="displayed">$ {{ product.price }}</h3>
+          <h3 v-if="product.salesPrice === undefined" class="displayed">
+            $ {{ product.price }}
+          </h3>
         </div>
         <p>{{ product.description }}</p>
         <div class="size">
@@ -106,7 +108,7 @@ import RatingComponent from "@/components/RatingComponent.vue";
 import IconComponent from "@/components/IconComponent.vue";
 import ProductDetailsCard from "@/components/ProductDetailsCard.vue";
 import ProductCard from "@/components/ProductCard.vue";
-import { Product } from "@/interfaces/ProductInterface";
+import { DetailedProduct, Product } from "@/interfaces/ProductInterface";
 
 export default defineComponent({
   components: {
@@ -123,14 +125,15 @@ export default defineComponent({
         id: this.$route.fullPath.slice(10),
         rating: 0,
         productName: "",
-        description: "",
-        picture: "",
         price: 0,
-        size: "",
         category: "",
+        picture: "",
+        brand: "",
+        sizes: "",
         colors: "",
+        description: "",
         salesPrice: null,
-      },
+      } as unknown as DetailedProduct,
     };
   },
   created() {
@@ -152,7 +155,7 @@ export default defineComponent({
         console.error(ex.message);
       }
     },
-    async getProductDetails(productId: string) {
+    async getProductDetails(productId: number) {
       const url = new URL(
         `https://localhost:7224/api/Products/` + productId
       ).toString();

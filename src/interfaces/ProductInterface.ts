@@ -14,7 +14,8 @@ export interface Product {
   originally available things. */
 export interface DetailedProduct extends Product {
   brand: string;
-  size: string;
-  color: string;
+  sizes: string;
+  colors: string;
   description: string;
+  salesPrice: number;
 }
