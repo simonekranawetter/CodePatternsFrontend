@@ -106,6 +106,7 @@ import RatingComponent from "@/components/RatingComponent.vue";
 import IconComponent from "@/components/IconComponent.vue";
 import ProductDetailsCard from "@/components/ProductDetailsCard.vue";
 import ProductCard from "@/components/ProductCard.vue";
+import { Product } from "@/interfaces/ProductInterface";
 
 export default defineComponent({
   components: {
@@ -117,7 +118,7 @@ export default defineComponent({
   name: "ProductComponent",
   data() {
     return {
-      products: null,
+      products: [] as Product[],
       product: {
         id: this.$route.fullPath.slice(10),
         rating: 0,

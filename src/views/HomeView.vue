@@ -55,6 +55,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import ProductCard from "@/components/ProductCard.vue";
+import { Product } from "@/interfaces/ProductInterface";
 
 export default defineComponent({
   name: "HomeView",
@@ -63,7 +64,7 @@ export default defineComponent({
   },
   data() {
     return {
-      products: null,
+      products: [] as Product[],
     };
   },
   created() {
