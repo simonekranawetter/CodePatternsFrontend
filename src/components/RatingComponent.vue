@@ -28,7 +28,7 @@ export default defineComponent({
   name: "RatingComponent",
   props: {
     rating: {
-      type: Object,
+      type: Number,
       required: true,
     },
   },
