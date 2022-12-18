@@ -6,7 +6,7 @@
     </div>
     <div class="container">
       <div class="product-images">
-        <img class="focus-img" src="" alt="" />
+        <img class="focus-img" :src="product.picture" alt="" />
         <div class="other-images">
           <img class="small-img" src="" alt="" />
           <img class="small-img" src="" alt="" />
@@ -22,11 +22,19 @@
         <div class="rating">
           <RatingComponent v-bind:rating="product.rating" />
         </div>
-        <h2>{{ product.price }}</h2>
+        <div class="pricing">
+          <h3 v-if="product.salesPrice !== undefined" class="hidden">
+            $ {{ product.price }}
+          </h3>
+          <h3 v-if="product.salesPrice !== undefined">
+            $ {{ product.salesPrice }}
+          </h3>
+          <h3 v-if="product.salesPrice === undefined" class="displayed">$ {{ product.price }}</h3>
+        </div>
         <p>{{ product.description }}</p>
         <div class="size">
           <h4>Size</h4>
-          <button class="sizebtn">{{ product.size }}</button>
+          <button class="sizebtn">S</button>
           <button class="sizebtn">M</button>
           <button class="sizebtn">L</button>
           <button class="sizebtn">XL</button>
@@ -115,10 +123,12 @@ export default defineComponent({
         rating: 0,
         productName: "",
         description: "",
+        picture: "",
         price: 0,
         size: "",
         category: "",
         colors: "",
+        salesPrice: null,
       },
     };
   },
@@ -189,7 +199,6 @@ export default defineComponent({
 .focus-img {
   margin: 10px;
   padding: 10px;
-  background-color: grey;
   height: 500px;
   width: 550px;
 }
@@ -280,5 +289,15 @@ h3 {
 }
 .related-products {
   display: flex;
+}
+.pricing {
+  margin-left: -30px;
+  text-align: left;
+  display: flex;
+}
+.hidden {
+  text-decoration: line-through;
+  padding-right: 10px;
+  color: grey;
 }
 </style>

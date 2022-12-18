@@ -2,16 +2,23 @@
 <template>
   <div
     class="product-card"
-    @click="() => $router.push('/products/' + product.id)" 
-    >
+    @click="() => $router.push('/products/' + product.id)">
     <div class="product-img">
-      <img src="" alt="" />
+      <img :src="product.picture" />
     </div>
     <div class="product-info">
       <h4>{{ product.category }}</h4>
       <h3>{{ product.productName }}</h3>
       <RatingComponent v-bind:rating="product.rating" />
-      <h3>{{ product.price }}</h3>
+      <div class="pricing">
+        <h3 v-if="product.salesPrice !== undefined" class="hidden">
+          $ {{ product.price }}
+        </h3>
+        <h3 v-if="product.salesPrice !== undefined">
+          $ {{ product.salesPrice }}
+        </h3>
+        <h3 v-if="product.salesPrice === undefined">$ {{ product.price }}</h3>
+      </div>
     </div>
   </div>
 </template>
@@ -38,6 +45,10 @@ export default defineComponent({
   width: 250px;
   background-color: whitesmoke;
 }
+.product-img img {
+  height: 200px;
+  max-width: 250px;
+}
 .product-card {
   width: 250px;
   padding: 20px;
@@ -57,5 +68,13 @@ h4 {
 }
 .rating {
   display: flex;
+}
+.pricing {
+  display: flex;
+}
+.hidden {
+  text-decoration: line-through;
+  padding-right: 10px;
+  color: grey;
 }
 </style>
