@@ -1,5 +1,13 @@
 <!-- SRP. Displays one product and handles API calls for one product and the
-  related products -->
+  related products
+
+  LSP - using the extends keyword makes sure that the ProductCard component is 
+  extended to this card and can be used in the same way, but with the added 
+  ability to dispay more detailed information. 
+  Following LSP I ensure that components are interchangeable and can be used in
+  a predictable and consistent way.
+  BUT I only added it here to be able to show a possible use of LSP
+-->
 <template>
   <div class="product">
     <div class="sales">
@@ -126,6 +134,7 @@ export default defineComponent({
     ProductCard,
   },
   name: "ProductComponent",
+  extends: ProductCard,
   data() {
     return {
       products: [] as Product[],

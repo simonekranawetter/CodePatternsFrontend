@@ -1,4 +1,10 @@
-<!-- SRP. Gets all the products and displays them according to the design -->
+<!-- SRP. Gets all the products and displays them according to the design 
+
+  A note on dependency inversion: Vue does offer dependency injection
+  but it makes refactoring more difficult and it is not reactive, that is
+  why I have chosen not to even attempt it in this project.
+-->
+
 <template>
   <div class="home">
     <img class="headerpic" src="../assets/header.jpg" alt="" />
