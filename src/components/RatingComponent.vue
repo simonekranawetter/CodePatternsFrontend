@@ -1,4 +1,5 @@
-<!-- eslint-disable prettier/prettier -->
+<!-- SRP, reused asset all over the site, so made it it's own component
+  so I can handle the computation here to make it easier to find as well -->
 <template>
   <div class="rating">
     <icon-component
@@ -8,7 +9,8 @@
       class="icons"
       icon="ion:star"
       color="salmon"
-      size="18"></icon-component>
+      size="18"
+    ></icon-component>
     <icon-component
       v-for="star in fillUpStars(rating)"
       :key="star"
@@ -16,7 +18,8 @@
       class="icons"
       icon="ion:star-outline"
       color="salmon"
-      size="18"></icon-component>
+      size="18"
+    ></icon-component>
   </div>
 </template>
 <script lang="ts">

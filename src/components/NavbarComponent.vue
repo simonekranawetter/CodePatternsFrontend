@@ -1,3 +1,8 @@
+<!-- SRP and OCP Even tho this also handles routing pratically because of the 
+  router link in the top it is a reuseable and extendable component
+  it also makes use of the icon component.
+  I kept all styling to specific components as scoped styles to make it easy 
+  to change styles in future updates-->
 <template>
   <div class="navbar-container">
     <div class="logo">

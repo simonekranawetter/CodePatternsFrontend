@@ -1,8 +1,11 @@
-<!-- eslint-disable prettier/prettier -->
+<!-- SRP and OCP, keeps styling of the product card in one file, handles the 
+  router push in case it is clicked and binds  whatever information it gets
+  from the API, in short everything concerning the product -->
 <template>
   <div
     class="product-card"
-    @click="() => $router.push('/products/' + product.id)">
+    @click="() => $router.push('/products/' + product.id)"
+  >
     <div class="product-img">
       <img :src="product.picture" />
     </div>

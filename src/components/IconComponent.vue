@@ -1,3 +1,4 @@
+<!-- SRP and OCP makes it easy to correctly display icons -->
 <template>
   <div class="icon">
     <Icon :icon="icon" :color="color" :width="`${size}px`" />

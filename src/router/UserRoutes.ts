@@ -1,5 +1,6 @@
 import { Route } from "@/interfaces/RouteInterface";
-
+// SRP, OCP
+// Future proofing the navbar in case more sections get added
 export const UserRoutes: Route[] = [
   {
     routeId: 1,

@@ -1,4 +1,5 @@
-<!-- eslint-disable prettier/prettier -->
+<!-- SRP. Displays one product and handles API calls for one product and the
+  related products -->
 <template>
   <div class="product">
     <div class="sales">
@@ -49,7 +50,8 @@
               class="arrow-down"
               icon="ion:ios-arrow-down"
               color="grey"
-              size="18"></icon-component>
+              size="18"
+            ></icon-component>
             <div class="dropdown-content">
               <a href="">{{ product.colors }}</a>
             </div>
@@ -62,27 +64,32 @@
               class="icons"
               icon="ion:logo-facebook"
               color="black"
-              size="18"></icon-component>
+              size="18"
+            ></icon-component>
             <icon-component
               class="icons"
               icon="ion:logo-instagram"
               color="black"
-              size="18"></icon-component>
+              size="18"
+            ></icon-component>
             <icon-component
               class="icons"
               icon="ion:logo-twitter"
               color="black"
-              size="18"></icon-component
+              size="18"
+            ></icon-component
             ><icon-component
               class="icons"
               icon="ion:logo-google"
               color="black"
-              size="18"></icon-component>
+              size="18"
+            ></icon-component>
             <icon-component
               class="icons"
               icon="ion:logo-linkedin"
               color="black"
-              size="18"></icon-component>
+              size="18"
+            ></icon-component>
           </div>
         </div>
       </div>
@@ -95,7 +102,8 @@
           <ProductCard
             v-for="product in products.slice(0, 5)"
             :key="product.id"
-            :product="product" />
+            :product="product"
+          />
         </div>
       </div>
     </div>

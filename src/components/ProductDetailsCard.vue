@@ -1,11 +1,12 @@
-<!-- eslint-disable prettier/prettier -->
+<!-- OCP makes it possible to add any additonal info we might want to add in 
+  the future to the detailed product view -->
 <template>
   <div class="container">
     <button class="headlines">Description</button>
   </div>
   <div class="accordion">
     <div class="hidden-p">
-      <p id="description" class="hidden">{{product.description}}</p>
+      <p id="description" class="hidden">{{ product.description }}</p>
     </div>
   </div>
 </template>

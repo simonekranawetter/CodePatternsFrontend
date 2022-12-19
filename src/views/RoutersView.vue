@@ -1,3 +1,4 @@
+<!-- SRP. Puts all the components together. -->
 <template>
   <navbar-component />
   <router-view />

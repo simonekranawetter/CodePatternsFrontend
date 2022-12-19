@@ -1,3 +1,5 @@
+<!-- SRP. The only place with styling that applies for everything,
+  makes it easy to change fonts and colorscheme in the future-->
 <template>
   <routers-view />
 </template>

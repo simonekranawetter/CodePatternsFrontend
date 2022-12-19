@@ -1,4 +1,4 @@
-<!-- eslint-disable prettier/prettier -->
+<!-- SRP. Gets all the products and displays them according to the design -->
 <template>
   <div class="home">
     <img class="headerpic" src="../assets/header.jpg" alt="" />
@@ -9,7 +9,8 @@
           class="product"
           v-for="product in products.slice(0, 8)"
           :key="product.id"
-          :product="product" />
+          :product="product"
+        />
       </div>
     </div>
     <div class="toppicks-items">
@@ -28,7 +29,8 @@
           <ProductCard
             v-for="product in products.slice(0, 4)"
             :key="product.id"
-            :product="product" />
+            :product="product"
+          />
         </div>
       </div>
       <div class="sales-container">
@@ -36,7 +38,8 @@
           <ProductCard
             v-for="product in products.slice(4, 8)"
             :key="product.id"
-            :product="product" />
+            :product="product"
+          />
         </div>
         <div class="sales-details">
           <div class="sales-img">

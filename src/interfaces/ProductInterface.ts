@@ -1,4 +1,4 @@
-/* interface seggregation: in a regular project i would store all types in a
+/* Interface seggregation: in a regular project i would store all types in a
   types.ts file to make it easier to find and understand the types of a project.
   but for thesake fo this exercise i have split into several interface files */
 

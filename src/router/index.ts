@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-
+// This file handles the actual routing. All routes go here.
+// This includes the routes displayed in the navbar too, but also
+// individual product routes
+// OCP, you can easily add more routes here
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
